@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--프래그먼트에 배치. 사이트 연결 화면-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 아래 프래그먼트에는 지도 배치 -->
+        <FrameLayout
+            android:id="@+id/content_map"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_weight="1"
+            android:background="@color/main_green"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_marginTop="520dp"
+            card_view:cardCornerRadius="27dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
+
+                <ImageButton
+                    android:id="@+id/site1"
+                    android:layout_marginLeft="38dp"
+                    android:layout_width="154dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button2_radius"/>
+
+                <ImageButton
+                    android:id="@+id/site2"
+                    android:layout_marginLeft="35dp"
+                    android:layout_width="154dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button2_radius"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="115dp">
+
+                <ImageButton
+                    android:id="@+id/site3"
+                    android:layout_marginLeft="38dp"
+                    android:layout_width="154dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button2_radius"/>
+
+                <ImageButton
+                    android:id="@+id/site4"
+                    android:layout_marginLeft="35dp"
+                    android:layout_width="154dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/button2_radius"/>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
+
+</LinearLayout>
