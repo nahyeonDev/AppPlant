@@ -6,40 +6,38 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:weightSum="8"
     tools:context=".PlantDetail">
 
-    <FrameLayout
+    <LinearLayout
+        android:weightSum="8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="MissingConstraints"
         android:orientation="vertical">
 
 
         <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="350dp">
+            android:layout_height="210dp">
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:background="@color/yellow"
                 tools:ignore="MissingConstraints" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_weight="7"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="485dp"
-                android:orientation="vertical"
-                card_view:cardCornerRadius="47dp"
-                android:layout_marginTop="200dp"
-                tools:ignore="MissingConstraints">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,7 +51,7 @@
                         android:layout_centerInParent="true"
                         android:text="식물 이름"
                         android:layout_marginLeft="144dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="20dp"
                         android:textAlignment="center"
                         android:textSize="30dp" />
 
@@ -64,21 +62,20 @@
                         android:layout_centerInParent="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="75dp"
-                        android:layout_marginTop="38dp"
+                        android:layout_marginTop="25dp"
                         android:background="@drawable/heart"/>
 
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
-                    android:layout_marginTop="100dp">
+                    android:layout_marginTop="25dp">
 
-                    <androidx.cardview.widget.CardView
+                    <LinearLayout
                         android:layout_width="150dp"
                         android:layout_height="120dp"
-                        card_view:cardCornerRadius="18dp"
                         android:layout_marginLeft="45dp"
-                        android:backgroundTint="@color/light_gray">
+                        android:background="@drawable/border3">
 
                         <TextView
                             android:id="@+id/plant_size"
@@ -89,19 +86,18 @@
                             android:layout_marginRight="2dp"
                             android:layout_marginLeft="2dp"/>
 
-                    </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <androidx.cardview.widget.CardView
+                        <LinearLayout
                             android:layout_width="160dp"
                             android:layout_height="52dp"
-                            card_view:cardCornerRadius="18dp"
                             android:layout_marginLeft="20dp"
-                            android:backgroundTint="@color/light_gray">
+                            android:background="@drawable/border3">
 
                             <ImageView
                                 android:layout_marginLeft="15dp"
@@ -118,15 +114,15 @@
                                 android:layout_marginLeft="30dp"
                                 android:text="특징1" />
 
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                        <androidx.cardview.widget.CardView
+                        <LinearLayout
                             android:layout_width="160dp"
                             android:layout_height="52dp"
-                            card_view:cardCornerRadius="18dp"
+
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="16dp"
-                            android:backgroundTint="@color/light_gray">
+                            android:background="@drawable/border3">
 
                             <TextView
                                 android:id="@+id/plant_detail2"
@@ -137,7 +133,7 @@
                                 android:layout_marginRight="2dp"
                                 android:layout_marginLeft="2dp"/>
 
-                        </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -146,11 +142,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_marginTop="230dp">
+                    android:layout_marginTop="20dp">
 
                     <LinearLayout
                         android:layout_width="330dp"
-                        android:layout_height="180dp"
+                        android:layout_height="160dp"
                         android:layout_marginLeft="45dp"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/border">
@@ -168,13 +164,13 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
 
         </LinearLayout>
 
 
-    </FrameLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
