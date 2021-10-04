@@ -15,6 +15,7 @@
         <activity android:name=".loginActivity"></activity>
         <activity android:name=".JoinMemberActivity"></activity>
         <activity android:name=".SiteDetailActivity"></activity>
+        <activity android:name=".PlantList"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

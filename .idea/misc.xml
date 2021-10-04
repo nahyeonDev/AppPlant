@@ -7,6 +7,8 @@
         <entry key="app/src/main/res/drawable/circle.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/plant_list.xml" value="0.2544002024419963" />
         <entry key="app/src/main/res/layout/plant_main.xml" value="0.18568840579710144" />
+        <entry key="app/src/main/res/layout/site_main.xml" value="0.11666666666666667" />
+        <entry key="app/src/main/res/layout/site_sub.xml" value="0.11666666666666667" />
       </map>
     </option>
   </component>
