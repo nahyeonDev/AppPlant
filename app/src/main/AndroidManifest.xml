@@ -3,6 +3,7 @@
     package="com.cookandroid.plantandroid">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +16,7 @@
         <activity android:name=".loginActivity"></activity>
         <activity android:name=".JoinMemberActivity"></activity>
         <activity android:name=".SiteDetailActivity"></activity>
+        <activity android:name=".PlantQuestionDetail"></activity>
         <activity android:name=".PlantList"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>

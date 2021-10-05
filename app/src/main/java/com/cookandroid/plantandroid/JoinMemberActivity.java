@@ -7,8 +7,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class JoinMemberActivity extends AppCompatActivity {
     Button joinBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

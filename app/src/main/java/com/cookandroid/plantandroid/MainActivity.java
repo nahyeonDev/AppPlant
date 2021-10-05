@@ -1,17 +1,21 @@
 package com.cookandroid.plantandroid;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     PlantMainFragment PMainFragment;
     SiteMainFragment SMainFragment;
+    PlantQuestionMain QMainFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //프래그먼트 생성
         PMainFragment = new PlantMainFragment();
         SMainFragment = new SiteMainFragment();
+        QMainFragment = new PlantQuestionMain();
 
         //처음 화면에 고정할 화면 설정
         getSupportFragmentManager().beginTransaction().replace(R.id.content_layout,PMainFragment).commitAllowingStateLoss();
@@ -34,9 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.siteMap:
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_layout, SMainFragment).commit();
                     return true;
+                case R.id.plantQ:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content_layout, QMainFragment).commit();
+                    return true;
             }
-
             return true;
         });
+
+
     }
 }

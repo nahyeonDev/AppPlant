@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "567434853235",
+    "project_id": "plantandroid-7282d",
+    "storage_bucket": "plantandroid-7282d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567434853235:android:60914d4fece88046132306",
+        "android_client_info": {
+          "package_name": "com.cookandroid.plantandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567434853235-sdc6euu8qs81p4tvpl9t63dl9eai6l76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cookandroid.plantandroid",
+            "certificate_hash": "4a9465efd2505c5d9ae5a0b636bcad4526eae51e"
+          }
+        },
+        {
+          "client_id": "567434853235-iaaod5s4o6kn8jjtg63u68m9cnfct4v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn8RrcMd8bqgpEsRx5YNH1D8o-Y0t2rZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567434853235-iaaod5s4o6kn8jjtg63u68m9cnfct4v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
