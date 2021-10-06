@@ -11,4 +11,5 @@
     <color name="light_gray">#EEEEEE</color>
     <color name="yellow">#FDFFC9</color>
     <color name="green">#EAFFDF</color>
+    <color name="font_green">#154327</color>
 </resources>

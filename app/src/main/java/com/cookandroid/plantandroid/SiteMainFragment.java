@@ -25,6 +25,8 @@ public class SiteMainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SiteDetailActivity.class);
+                intent.putExtra("제목","경상북도식물원");
+                intent.putExtra("링크", "https://www.gb.go.kr/Main/open_contents/section/arboretum/index.html");
                 startActivity(intent);
             }
         });
@@ -32,6 +34,8 @@ public class SiteMainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SiteDetailActivity.class);
+                intent.putExtra("제목","기청산식물원");
+                intent.putExtra("링크", "http://key-chungsan.co.kr/");
                 startActivity(intent);
             }
         });
@@ -39,6 +43,8 @@ public class SiteMainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SiteDetailActivity.class);
+                intent.putExtra("제목","사유원");
+                intent.putExtra("링크", "http://sayuwon.com/");
                 startActivity(intent);
             }
         });
@@ -46,6 +52,8 @@ public class SiteMainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SiteDetailActivity.class);
+                intent.putExtra("제목","세아조각수목원");
+                intent.putExtra("링크", "https://xn--4y2bzqm1nvza89ijna55edy9c.com/");
                 startActivity(intent);
             }
         });

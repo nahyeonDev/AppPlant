@@ -24,8 +24,9 @@
             android:layout_marginLeft="160dp"
             android:layout_marginBottom="12dp"
             android:text="식물 Q&amp;A"
-            android:textSize="20sp"
-            android:background="@android:color/transparent"/>
+            android:textSize="30sp"
+            android:fontFamily="@font/main_font"
+            android:textColor="@color/font_green"/>
 
     </LinearLayout>
 
@@ -50,7 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사람들이 가장 궁금해 하는 질문"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/font_green"
+                android:textSize="18sp"/>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -115,7 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사람들이 가장 궁금해 하는 질문"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/font_green"
+                android:textSize="18sp"/>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -178,7 +185,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="사람들이 가장 궁금해 하는 질문"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/font_green"
+                android:textSize="18sp"/>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -241,7 +251,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="추천! 식물이야기"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/main_font"
+                android:textColor="@color/font_green"
+                android:textSize="18sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

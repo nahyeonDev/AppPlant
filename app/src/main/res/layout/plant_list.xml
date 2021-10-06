@@ -38,6 +38,8 @@
                 android:text="식물분류"
                 android:textAlignment="center"
                 android:textSize="30sp"
+                android:textColor="@color/font_green"
+                android:fontFamily="@font/main_font"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageButton3"

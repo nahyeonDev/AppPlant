@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     PlantMainFragment PMainFragment;
     SiteMainFragment SMainFragment;
     PlantQuestionMain QMainFragment;
+    MyPageFragment MyMainFragment;
 
 
     @Override
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         PMainFragment = new PlantMainFragment();
         SMainFragment = new SiteMainFragment();
         QMainFragment = new PlantQuestionMain();
+        MyMainFragment = new MyPageFragment();
 
         //처음 화면에 고정할 화면 설정
         getSupportFragmentManager().beginTransaction().replace(R.id.content_layout,PMainFragment).commitAllowingStateLoss();
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.plantQ:
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_layout, QMainFragment).commit();
+                    return true;
+                case R.id.myPage:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.content_layout, MyMainFragment).commit();
                     return true;
             }
             return true;
