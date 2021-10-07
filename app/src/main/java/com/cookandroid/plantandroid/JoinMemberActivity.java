@@ -38,7 +38,6 @@ public class JoinMemberActivity extends AppCompatActivity {
 
         joinBtn = findViewById(R.id.joinBtn);
 
-        idEdit = findViewById(R.id.idEdit);
         emailEdit = findViewById(R.id.emailEdit);
         passwordEdit = findViewById(R.id.passwordEdit);
         rePasswordEdit = findViewById(R.id.rePasswordEdit);
