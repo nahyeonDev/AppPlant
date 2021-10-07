@@ -32,14 +32,14 @@
                 android:background="@drawable/border2"
                 android:layout_marginTop="40dp">
                 <EditText
-                    android:id="@+id/idInput"
+                    android:id="@+id/emailInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@null"
                     android:layout_marginLeft="15dp"
                     android:textSize="15sp"
-                    android:hint="아이디" />
+                    android:hint="이메일" />
             </LinearLayout>
 
             <LinearLayout
