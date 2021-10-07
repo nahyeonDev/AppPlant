@@ -40,6 +40,7 @@ public class loginActivity extends AppCompatActivity {
 
 
         //로그인 비번입력시 ****로 나오는것도 생각해볼것
+        //로그인 후 메인액티비티에서 뒤로가기 누를시 로그인 화면 뜨는거 고칠것
 
         logBtn.setOnClickListener(new View.OnClickListener() {
 
