@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/button2_radius.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/circle.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/item_recycler.xml" value="0.31223628691983124" />
         <entry key="app/src/main/res/layout/plant_list.xml" value="0.22222073347546517" />
         <entry key="app/src/main/res/layout/plant_main.xml" value="0.18568840579710144" />
         <entry key="app/src/main/res/layout/site_main.xml" value="0.11666666666666667" />
