@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_login_logo"
                 android:layout_gravity="center"
-                android:layout_marginTop="160dp"/>
+                android:layout_marginTop="120dp"/>
 
             <LinearLayout
                 android:layout_width="260dp"
@@ -56,7 +56,8 @@
                     android:background="@null"
                     android:layout_marginLeft="15dp"
                     android:textSize="15sp"
-                    android:hint="비밀번호" />
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"/>
             </LinearLayout>
 
             <LinearLayout
@@ -94,6 +95,32 @@
                     android:textSize="12sp"
                     android:layout_gravity="bottom"
                     android:textColor="@color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="다른 방법으로 로그인하기"
+                    android:textSize="10sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <ImageButton
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/google_login"
+                    android:background="@drawable/circle3"
+                    android:scaleType="fitCenter" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -41,7 +41,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:textSize="15sp"
-                android:hint="비밀번호" />
+                android:hint="비밀번호"
+                android:inputType="textPassword"/>
 
             <EditText
                 android:id="@+id/rePasswordEdit"
@@ -50,7 +51,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:textSize="15sp"
-                android:hint="비밀번호 확인" />
+                android:hint="비밀번호 확인"
+                android:inputType="textPassword"/>
 
 
             <LinearLayout
