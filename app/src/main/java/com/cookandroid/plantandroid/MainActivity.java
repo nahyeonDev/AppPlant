@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         QMainFragment = new PlantQuestionMain();
         MyMainFragment = new MyPageFragment();
 
+
         //처음 화면에 고정할 화면 설정
         getSupportFragmentManager().beginTransaction().replace(R.id.content_layout,PMainFragment).commitAllowingStateLoss();
 

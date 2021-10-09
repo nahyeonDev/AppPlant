@@ -114,6 +114,7 @@
                     android:layout_marginBottom="10dp"/>
 
                 <ImageButton
+                    android:id="@+id/googleLogin"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"

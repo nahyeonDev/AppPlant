@@ -42,6 +42,7 @@ public class PlantList extends AppCompatActivity{
             RecyclerView_main = findViewById(R.id.recycler_view);
             pList = new ArrayList<>();
 
+            //Unable to start activity ComponentInfo/ java.lang.NullPointerException: Attempt to invoke virtual method 'void androidx.recyclerview.widget.RecyclerView.setAdapter(androidx.recyclerview.widget.RecyclerView$Adapter)' on a null object reference
             pAdapter = new PlantAdapter(pList);
             RecyclerView_main.setAdapter(pAdapter);
             RecyclerView_main.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));

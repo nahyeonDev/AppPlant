@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class JoinMemberActivity extends AppCompatActivity {
     Button joinBtn;
 
-    private EditText idEdit;
     private EditText emailEdit;
     private EditText passwordEdit;
     private EditText rePasswordEdit;
@@ -47,28 +46,46 @@ public class JoinMemberActivity extends AppCompatActivity {
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String id = idEdit.getText().toString().trim();
+                //공백인 부분을 제거하고 보여주는 trim();
                 final String email = emailEdit.getText().toString().trim();
                 final String pwd = passwordEdit.getText().toString().trim();
                 final String repwd = rePasswordEdit.getText().toString().trim();
-                //공백인 부분을 제거하고 보여주는 trim();
 
-                firebaseAuth.createUserWithEmailAndPassword(email, pwd)
-                        .addOnCompleteListener(JoinMemberActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                //이메일, 비밀번호가 채워지지 않았을때
+                if(email.equals("") ){
+                    Toast.makeText(JoinMemberActivity.this, "이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else if(pwd.equals("")||repwd.equals("")){
+                    Toast.makeText(JoinMemberActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+                }
+                else{//칸이 다 채워졌을 때
+                    if(pwd.length()<6){
+                        Toast.makeText(JoinMemberActivity.this, "비밀번호를 6자리 이상 입력해주세요", Toast.LENGTH_SHORT).show();
+                    }
 
-                                if (task.isSuccessful()) {
-                                    Intent intent = new Intent(getApplicationContext(), loginActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                    if(pwd.equals(repwd)){//비밀번호가 동일하다면
+                        firebaseAuth.createUserWithEmailAndPassword(email, pwd)
+                                .addOnCompleteListener(JoinMemberActivity.this, new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                } else {
-                                    Toast.makeText(JoinMemberActivity.this, "등록 에러", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-                            }
-                        });
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), loginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+
+                                        } else {
+                                            Toast.makeText(JoinMemberActivity.this, "이메일을 올바르게 입력해주세요", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                    }
+                                });
+                    }
+                    else{//비밀번호가 다르면
+                        Toast.makeText(JoinMemberActivity.this, "비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         });
 
