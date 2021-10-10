@@ -1,12 +1,14 @@
 package com.cookandroid.plantandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> {
     private ArrayList<ListItemObj> mData = null ;
-
+    private Intent intent;
 
     //아이템 뷰 저장하는 뷰 홀더 클래스
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -58,8 +60,21 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
         ListItemObj item = mData.get(position) ;
 
+        //이름가져오기
         holder.plant_title.setText(item.getPlantName());
         //holder.btn.setText(item.getPlantName());
+
+        //상세페이지 연결
+        holder.plantImg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                intent= new Intent(v.getContext(), PlantDetail.class);
+                intent.putExtra("number", position);
+                intent.putExtra("title", mData.get(position).getPlantName());
+                v.getContext().startActivity(intent);
+                Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
