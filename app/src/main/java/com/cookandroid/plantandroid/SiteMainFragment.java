@@ -7,10 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public class SiteMainFragment extends Fragment {
+import com.naver.maps.map.MapView;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+
+public class SiteMainFragment extends Fragment implements OnMapReadyCallback {
     ImageButton site1, site2, site3, site4;
+
+
+    //네이버 지도
+    private MapView mapView;
+    private static NaverMap naverMap;
+
     View v;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,7 +69,18 @@ public class SiteMainFragment extends Fragment {
             }
         });
 
+        //네이버 지도 연결
+        mapView = v.findViewById(R.id.naver_map);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
+
         return v;
+
+    }
+
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
 
     }
 }
