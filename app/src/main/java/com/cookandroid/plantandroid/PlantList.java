@@ -27,10 +27,12 @@ public class PlantList extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            //10.5추가
-            backBtn_plant_list = findViewById(R.id.backBtn_plant_list);
+        setContentView (R.layout.plant_list);
 
-            //식물 상세페이지 연결
+        //10.5추가
+        backBtn_plant_list = findViewById(R.id.backBtn_plant_list);
+
+        //식물 상세페이지 연결
 //        식물 상세페이지 연결
 //        listBtn1.setOnClickListener(new Button.OnClickListener(){
 //            @Override
@@ -39,27 +41,28 @@ public class PlantList extends AppCompatActivity{
 //                public void onClick(View v) {finish();}
 //            });
 
-            RecyclerView_main = findViewById(R.id.recycler_view);
-            pList = new ArrayList<>();
 
-            //Unable to start activity ComponentInfo/ java.lang.NullPointerException: Attempt to invoke virtual method 'void androidx.recyclerview.widget.RecyclerView.setAdapter(androidx.recyclerview.widget.RecyclerView$Adapter)' on a null object reference
-            pAdapter = new PlantAdapter(pList);
-            RecyclerView_main.setAdapter(pAdapter);
-            RecyclerView_main.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        pList = new ArrayList<>();
 
-            addItem("식물1");
-            addItem("2");
-            addItem("3");
+        RecyclerView_main = findViewById(R.id.recycler_view);
+        RecyclerView_main.setLayoutManager(new LinearLayoutManager(this));
+
+        pAdapter = new PlantAdapter(pList);
+        RecyclerView_main.setAdapter(pAdapter);
+
+        addItem("식물1");
+        addItem("2");
+        addItem("3");
 
 
-            pAdapter.notifyDataSetChanged();
-
-        }
-
-        private void addItem (String text){
-            ListItemObj item = new ListItemObj(text);
-
-            pList.add(item);
-        }
-
+        pAdapter.notifyDataSetChanged();
     }
+
+    private void addItem (String name){
+        ListItemObj item = new ListItemObj();
+        item.setPlantName(name);
+
+        pList.add(item);
+    }
+
+}
