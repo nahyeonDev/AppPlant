@@ -50,9 +50,12 @@ public class PlantList extends AppCompatActivity{
         pAdapter = new PlantAdapter(pList);
         RecyclerView_main.setAdapter(pAdapter);
 
+        //데이터 양이 많아지면 화면에서 어떻게 보일지 테스트로 더 넣음.
         addItem("식물1");
-        addItem("2");
-        addItem("3");
+        addItem("식물2");
+        addItem("식물3");
+        addItem("식물4");
+        addItem("식물5");
 
 
         pAdapter.notifyDataSetChanged();

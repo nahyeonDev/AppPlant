@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,13 +26,15 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
         Button btn;
         ImageView plantImg;
         TextView plant_title;
+        LinearLayout list_container;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             //btn = itemView.findViewById(R.id.button);
             plant_title=itemView.findViewById(R.id.plant_title);
-            plantImg=itemView.findViewById(R.id.plantImg);
+            plantImg=itemView.findViewById(R.id.plant_Img);
+            list_container = itemView.findViewById(R.id.list_container);
 
         }
     }
@@ -64,8 +67,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
         holder.plant_title.setText(item.getPlantName());
         //holder.btn.setText(item.getPlantName());
 
-        //상세페이지 연결
-        holder.plantImg.setOnClickListener(new View.OnClickListener(){
+        //상세페이지 연결(item_recycler의 리니어레이아웃의 id를 연결해 이미지가 아닌 리스트 어느 곳을 눌러도 넘어갈 수 있음)
+        holder.list_container.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 intent= new Intent(v.getContext(), PlantDetail.class);
