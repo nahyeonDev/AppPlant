@@ -12,25 +12,40 @@
             android:layout_weight="4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/main_green">
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="3.99"
                 android:orientation="vertical">
-                <!-- mapview 네이버 지도 배치!-->
-                <com.naver.maps.map.MapView
-                    android:id="@+id/naver_map"
+                <Button
+                    android:id="@+id/zOut"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:text="전체화면"
+                    android:fontFamily="@font/main_font"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/black"
+                    android:visibility="invisible"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"/>
+                <!--네이버 지도 배치!-->
+                <fragment
+                    android:id="@+id/map"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:name="com.naver.maps.map.MapFragment"/>
+
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_weight="0.01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/border2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
