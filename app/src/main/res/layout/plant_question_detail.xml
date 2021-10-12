@@ -9,16 +9,16 @@ android:orientation="vertical"
 tools:context=".PlantDetail">
 
 <LinearLayout
-    android:weightSum="7"
+    android:layout_weight="10"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
     <LinearLayout
-        android:layout_weight="7"
+        android:layout_weight="9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/green">
 
@@ -49,12 +49,15 @@ tools:context=".PlantDetail">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
             android:paddingTop="30dp"
             android:paddingBottom="30dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/QTxt"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="35sp"
@@ -72,6 +75,7 @@ tools:context=".PlantDetail">
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_weight="0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -103,6 +107,7 @@ tools:context=".PlantDetail">
         </LinearLayout>
 
                 <LinearLayout
+                    android:layout_weight="2"
                     android:layout_width="380dp"
                     android:layout_height="400dp"
                     android:layout_margin="15dp"
@@ -110,10 +115,11 @@ tools:context=".PlantDetail">
 
                     <TextView
                         android:id="@+id/plant_data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="공공데이터 내용 + 아이들 맞춤 내용"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginLeft="15dp"/>
 
