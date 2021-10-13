@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,16 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> {
-    private ArrayList<ListItemObj> mData = null ;
+    private ArrayList<ListItemObj> mData;
     private Intent intent;
 
     //아이템 뷰 저장하는 뷰 홀더 클래스
     public class ViewHolder extends RecyclerView.ViewHolder{
         Button btn;
-        ImageView plantImg;
+        //ImageView plantImg;
         TextView plant_title;
         LinearLayout list_container;
 
@@ -33,7 +31,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
             //btn = itemView.findViewById(R.id.button);
             plant_title=itemView.findViewById(R.id.plant_title);
-            plantImg=itemView.findViewById(R.id.plant_Img);
+           //plantImg=itemView.findViewById(R.id.plant_Img);
             list_container = itemView.findViewById(R.id.list_container);
 
         }
@@ -64,7 +62,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
         ListItemObj item = mData.get(position) ;
 
         //이름가져오기
-        holder.plant_title.setText(item.getPlantName());
+        holder.plant_title.setText(item.getplantName());
         //holder.btn.setText(item.getPlantName());
 
         //상세페이지 연결(item_recycler의 리니어레이아웃의 id를 연결해 이미지가 아닌 리스트 어느 곳을 눌러도 넘어갈 수 있음)
@@ -72,8 +70,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 intent= new Intent(v.getContext(), PlantDetail.class);
-                intent.putExtra("number", position);
-                intent.putExtra("title", mData.get(position).getPlantName());
+                //식물 이름을 디테일 화면으로 전해서 식물 이름으로 세부화면 내용 받아옴
+                intent.putExtra("title", mData.get(position).getplantName());
                 v.getContext().startActivity(intent);
                 Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
             }

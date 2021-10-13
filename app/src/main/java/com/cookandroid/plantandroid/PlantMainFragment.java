@@ -24,45 +24,63 @@ public class PlantMainFragment extends Fragment {
         plant5 = v.findViewById(R.id.plant5);
         plant6 = v.findViewById(R.id.plant6);
 
+        //go to 쌍떡잎 식물 리스트 뷰
         plant1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlantList.class);
+                intent.putExtra("title", "쌍떡잎 식물");
+                intent.putExtra("dataName","PlantList1");
                 startActivity(intent);
             }
         });
+        //go to 외떡잎 식물 리스트 뷰
         plant2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlantList.class);
+                intent.putExtra("title", "외떡잎 식물");
+                intent.putExtra("dataName","PlantList2");
                 startActivity(intent);
             }
         });
+        //go to 민꽃 식물 리스트 뷰
         plant3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlantList.class);
+                intent.putExtra("title", "민꽃 식물");
+                intent.putExtra("dataName","PlantList3");
                 startActivity(intent);
             }
         });
+        //go to 겉씨 식물 리스트 뷰
         plant4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlantList.class);
+                intent.putExtra("title", "겉씨 식물");
+                intent.putExtra("dataName","PlantList4");
                 startActivity(intent);
             }
         });
+        //go to 경북 식물 리스트 뷰
         plant5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PlantList.class);
+                intent.putExtra("title", "경북 식물");
+                intent.putExtra("dataName","PlantList5");
                 startActivity(intent);
             }
         });
+        //go to 외래유해 식물 리스트 뷰
         plant6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlantList.class);
+                Intent intent = new Intent(getActivity(), PlantList2.class);
+                intent.putExtra("title", "외래위험 식물");
+                intent.putExtra("dataName","PlantList6");
                 startActivity(intent);
             }
         });

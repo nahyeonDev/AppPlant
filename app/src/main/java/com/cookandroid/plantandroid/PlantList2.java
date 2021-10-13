@@ -18,8 +18,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-//유해식물을 제외한 나머지 식물리스트
-public class PlantList extends AppCompatActivity{
+//유해식물리스트
+//PlantList.java와 ListItemObj, PlantAdapter 사용은 동일.
+//식물 수만 다르게 하기 위해 따로 만들었음.
+public class PlantList2 extends AppCompatActivity {
     private ImageButton backBtn_plant_list;
     private RecyclerView RecyclerView_main;
     private PlantAdapter pAdapter;
@@ -43,6 +45,9 @@ public class PlantList extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView (R.layout.plant_list);
+
+        //10.5추가
+        backBtn_plant_list = findViewById(R.id.backBtn_plant_list);
 
         pList = new ArrayList<>();
 
@@ -68,10 +73,7 @@ public class PlantList extends AppCompatActivity{
         //데이터베이스에 저장한 식물을 받아옴.
         //MAX_SIZE만큼 받아오기 때문에 데이터베이스를 늘리려면 MAX_SIZE를 그 수로 변경한 후 실행
         for(int i=0; i<MAX_SIZE; i++){
-
-            //파이어베이스의 P1,P2....이름을 title에 저장함
             title = "P"+Integer.toString(i+1);
-            //plant 밑 dName(메인에서 받아온 PlantList(1,2..)) 그 밑 title(P1,P2...)에 접근
             databaseReference = database.getReference("Plant").child(dName).child(title);
 
             int num = i;

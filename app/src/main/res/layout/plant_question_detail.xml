@@ -63,6 +63,7 @@ tools:context=".PlantDetail">
                 android:textSize="35sp"
                 android:textColor="@color/black"
                 android:text="식물은 감각이 없나요?"
+                android:layout_weight="1"
                 android:fontFamily="@font/main_font" />
 
         </LinearLayout>
