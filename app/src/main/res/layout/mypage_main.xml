@@ -115,11 +115,47 @@
             android:layout_height="210dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:orientation="vertical"
             android:background="@drawable/border3">
-            <FrameLayout
-                android:id="@+id/content_fram"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
+
+            <TextView
+                android:id="@+id/memberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:text="회원정보"
+                android:visibility="invisible"
+                android:fontFamily="@font/main_font"/>
+
+            <TextView
+                android:id="@+id/googleLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+
+
+<!--            <FrameLayout-->
+<!--                android:id="@+id/content_fram"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"/>-->
         </LinearLayout>
     </LinearLayout>
 
