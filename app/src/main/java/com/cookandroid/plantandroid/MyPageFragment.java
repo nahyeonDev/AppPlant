@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MyPageFragment extends Fragment {
@@ -19,10 +17,8 @@ public class MyPageFragment extends Fragment {
     private Button logoutBtn;
     private Button userBtn;
     private TextView userEmail;
-    private TextView googleLog;
-    private TextView email;
-    private TextView name;
-    private TextView memberText;
+
+    MyPageUserFragment myPageUserFragment;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.mypage_main, container, false);
@@ -30,10 +26,8 @@ public class MyPageFragment extends Fragment {
         logoutBtn=v.findViewById(R.id.logoutBtn);
         userBtn=v.findViewById(R.id.userBtn);
         userEmail=v.findViewById(R.id.userEmail);
-        googleLog=v.findViewById(R.id.googleLog);
-        email=v.findViewById(R.id.email);
-        name=v.findViewById(R.id.name);
-        memberText=v.findViewById(R.id.memberText);
+
+        myPageUserFragment = new MyPageUserFragment();
 
         //사용자 이메일 보여짐
         userEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -42,18 +36,8 @@ public class MyPageFragment extends Fragment {
         userBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //회원정보 텍스트 보임
-                memberText.setVisibility(View.VISIBLE);
-                if(FirebaseAuth.getInstance().getCurrentUser().getEmail().contains("gmail")){
-                    googleLog.setText("구글 로그인 여부: O");
-                }else{
-                    googleLog.setText("구글 로그인 여부: X");
-                }
-                email.setText("이메일: "+FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                //이름은 구글처럼 따로 연동되는 계정만 가져올 수 있음-> null이 아닐때만 보여지도록 설정
-                if(!FirebaseAuth.getInstance().getCurrentUser().getDisplayName().equals("")){
-                    name.setText("이름: "+FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                }
+                //회원정보 프래그먼트로 연결
+                getChildFragmentManager().beginTransaction().replace(R.id.frame_container, myPageUserFragment).commit();
             }
         });
 
@@ -74,6 +58,5 @@ public class MyPageFragment extends Fragment {
 
         return v;
     }
-
 
 }

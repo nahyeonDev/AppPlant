@@ -48,7 +48,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="10dp"
-        android:layout_weight="0.05">
+        android:paddingBottom="10dp"
+        android:layout_weight="0.01">
         <TextView
             android:id="@+id/userEmail"
             android:layout_width="wrap_content"
@@ -57,7 +58,7 @@
             android:text="이메일"
             android:textColor="@color/black"
             android:fontFamily="@font/main_font"
-            android:textSize="30sp"/>
+            android:textSize="25sp"/>
 
     </LinearLayout>
 
@@ -65,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:layout_weight="3.8">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -110,53 +111,17 @@
                 android:fontFamily="@font/main_font"
                 />
         </LinearLayout>
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/frame_container"
             android:layout_width="320dp"
             android:layout_height="210dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:orientation="vertical"
             android:background="@drawable/border3">
 
+            <!--이곳에 찜,별,회원정보 화면을 보여줌!-->
 
-            <TextView
-                android:id="@+id/memberText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:textSize="20dp"
-                android:text="회원정보"
-                android:visibility="invisible"
-                android:fontFamily="@font/main_font"/>
-
-            <TextView
-                android:id="@+id/googleLog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
-
-
-<!--            <FrameLayout-->
-<!--                android:id="@+id/content_fram"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"/>-->
-        </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
 
 </LinearLayout>
