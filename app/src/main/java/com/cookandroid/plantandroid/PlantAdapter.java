@@ -31,7 +31,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
 
             //btn = itemView.findViewById(R.id.button);
             plant_title=itemView.findViewById(R.id.plant_title);
-           //plantImg=itemView.findViewById(R.id.plant_Img);
+            //plantImg=itemView.findViewById(R.id.plant_Img);
             list_container = itemView.findViewById(R.id.list_container);
 
         }
@@ -84,6 +84,5 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
     public int getItemCount() {
         return mData.size();
     }
-
 
 }

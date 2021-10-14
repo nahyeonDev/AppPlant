@@ -1,5 +1,7 @@
 package com.cookandroid.plantandroid;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -35,11 +37,11 @@ public class PlantDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_detail);
 
-        intent= getIntent();
-        number=intent.getIntExtra("number",-1); //이걸로 데이터 구분할수있을듯
-        title= intent.getStringExtra("title");
+        intent = getIntent();
+        number = intent.getIntExtra("number", -1); //이걸로 데이터 구분할수있을듯
+        title = intent.getStringExtra("title");
 
-        plantTitle=findViewById(R.id.plantTitle);
+        plantTitle = findViewById(R.id.plantTitle);
         plantTitle.setText(title);
 
         pSize = findViewById(R.id.plant_size);
@@ -57,7 +59,7 @@ public class PlantDetail extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     PConItem list = snapshot.getValue(PConItem.class);
                     pSize.setText(list.getsize());
                     pLocation.setText(list.getlocation());

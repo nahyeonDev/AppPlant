@@ -50,11 +50,11 @@
         android:paddingTop="10dp"
         android:layout_weight="0.05">
         <TextView
-            android:id="@+id/userId"
+            android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="아이디"
+            android:text="이메일"
             android:textColor="@color/black"
             android:fontFamily="@font/main_font"
             android:textSize="30sp"/>

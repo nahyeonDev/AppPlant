@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -14,11 +15,16 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MyPageFragment extends Fragment {
     View v;
     private Button logoutBtn;
+    private TextView userEmail;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.mypage_main, container, false);
 
         logoutBtn=v.findViewById(R.id.logoutBtn);
+        userEmail=v.findViewById(R.id.userEmail);
+
+        //사용자 이메일 보여짐
+        userEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
         //로그아웃
         logoutBtn.setOnClickListener(new View.OnClickListener() {
