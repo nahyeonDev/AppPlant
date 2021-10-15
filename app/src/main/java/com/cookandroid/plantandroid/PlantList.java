@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class PlantList extends AppCompatActivity {
     private FirebaseDatabase database;
 
     //firebase PlantList의 식물 이름 수 만큼 MAX_SIZE를 미리 설정해 줘야 함.
-    final int MAX_SIZE = 4;
+    final int MAX_SIZE = 10;    //MAX_SIZE 변경
     String title;
     String[] name = new String[MAX_SIZE];
 
@@ -45,6 +46,14 @@ public class PlantList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plant_list);
+
+        //10.5추가
+        backBtn_plant_list = findViewById(R.id.backBtn_plant_list);
+        //back버튼 액션
+        backBtn_plant_list.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {finish();}
+        });
 
         pList = new ArrayList<>();
 

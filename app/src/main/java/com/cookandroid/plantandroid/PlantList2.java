@@ -2,6 +2,7 @@ package com.cookandroid.plantandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class PlantList2 extends AppCompatActivity {
     private FirebaseDatabase database;
 
     //firebase PlantList의 식물 이름 수 만큼 MAX_SIZE를 미리 설정해 줘야 함.
-    final int MAX_SIZE = 4;
+    final int MAX_SIZE = 6; /*MAX_SIZE 변경*/
     String title;
     String [] name = new String[MAX_SIZE];
 
@@ -48,6 +49,11 @@ public class PlantList2 extends AppCompatActivity {
 
         //10.5추가
         backBtn_plant_list = findViewById(R.id.backBtn_plant_list);
+        //back 버튼 액션
+        backBtn_plant_list.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {finish();}
+        });
 
         pList = new ArrayList<>();
 
