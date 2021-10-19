@@ -2,6 +2,8 @@ package com.cookandroid.plantandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,9 @@ public class PlantQuestionDetail extends AppCompatActivity {
 
     private String main = null;
     private String sub = null;
+
+    ImageButton starBtn;
+    boolean i = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,20 @@ public class PlantQuestionDetail extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        starBtn = (ImageButton)findViewById(R.id.star_btn);
+        starBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i == true){
+                    starBtn.setBackgroundResource(R.drawable.line_star);
+                    i = false;
+                }else {
+                    starBtn.setBackgroundResource(R.drawable.star);
+                    i = true;
+                }
             }
         });
     }

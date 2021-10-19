@@ -1,14 +1,15 @@
 package com.cookandroid.plantandroid;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,11 @@ public class PlantDetail extends AppCompatActivity {
     TextView pSpecial;
     TextView pContent;
 
+    ImageButton likeBtn;
+    boolean i = true;
+
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +47,7 @@ public class PlantDetail extends AppCompatActivity {
         number = intent.getIntExtra("number", -1); //이걸로 데이터 구분할수있을듯
         title = intent.getStringExtra("title");
 
-        plantTitle = findViewById(R.id.plantTitle);
-        plantTitle.setText(title);
+        plantTitle = findViewById(R.id.plantTitle);      plantTitle.setText(title);
 
         pSize = findViewById(R.id.plant_size);
         pLocation = findViewById(R.id.plant_location);
@@ -71,6 +76,25 @@ public class PlantDetail extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        //파이어베이스에 하트 누르면 현재 사용자의 이메일과 그 게시물의 식물 이름 같이 저장할 예정
+        //마이페이지 화면에서 현재 사용자 이메일로 찜 내역 불러올 것임.
+        userId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        database.getReference("Like").setValue(userId);
+
+        likeBtn = (ImageButton)findViewById(R.id.like_btn);
+        likeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i == true){
+                    likeBtn.setBackgroundResource(R.drawable.line_heart);
+                    i = false;
+                }else {
+                    likeBtn.setBackgroundResource(R.drawable.heart);
+                    i = true;
+                }
             }
         });
     }
