@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SiteDetailActivity extends AppCompatActivity {
     private WebView mWebView; // 웹뷰 선언
     private WebSettings mWebSettings; //웹뷰세팅
+    private ImageButton backBtn;
 
     TextView txtTitle;
 
@@ -41,5 +42,12 @@ public class SiteDetailActivity extends AppCompatActivity {
         mWebSettings.setDomStorageEnabled(true);
         //경상북도 수목원으로 디폴트 함.(화면 전환때 링크 정보 받아오면 됨)
         mWebView.loadUrl(web);
+
+        //back 버튼 액션
+        backBtn = findViewById(R.id.backBtn_site);
+        backBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {finish();}
+        });
     }
 }
