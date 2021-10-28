@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -17,8 +18,10 @@ public class MyPageFragment extends Fragment {
     private Button logoutBtn;
     private Button userBtn;
     private TextView userEmail;
+    private ImageButton likeBtn;
 
     MyPageUserFragment myPageUserFragment;
+    HeartBookmarkFragment heartBookmarkFragment;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.mypage_main, container, false);
@@ -26,8 +29,10 @@ public class MyPageFragment extends Fragment {
         logoutBtn=v.findViewById(R.id.logoutBtn);
         userBtn=v.findViewById(R.id.userBtn);
         userEmail=v.findViewById(R.id.userEmail);
+        likeBtn=v.findViewById(R.id.likeBtn);
 
         myPageUserFragment = new MyPageUserFragment();
+        heartBookmarkFragment = new HeartBookmarkFragment();
 
         //사용자 이메일 보여짐
         userEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
@@ -40,6 +45,16 @@ public class MyPageFragment extends Fragment {
                 getChildFragmentManager().beginTransaction().replace(R.id.frame_container, myPageUserFragment).commit();
             }
         });
+
+        //하트 북마크 버튼
+        likeBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //하트북마크 프래그먼트로 연결
+                getChildFragmentManager().beginTransaction().replace(R.id.frame_container, heartBookmarkFragment).commit();
+            }
+        });
+
 
         //로그아웃
         logoutBtn.setOnClickListener(new View.OnClickListener() {

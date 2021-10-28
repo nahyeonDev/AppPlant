@@ -73,7 +73,7 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.ViewHolder> 
                 //식물 이름을 디테일 화면으로 전해서 식물 이름으로 세부화면 내용 받아옴
                 intent.putExtra("title", mData.get(position).getplantName());
                 v.getContext().startActivity(intent);
-                Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
