@@ -10,15 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -99,20 +105,21 @@ public class PlantDetail extends AppCompatActivity {
 //        plant.put("last", "Lovelace");
 
         // 문서와 ID 넣기
-        db.collection("HeartBookmark")
-                .add(plant)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) { //디테일 들어가면 문서와 필드가 추가됨
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
+//        db.collection("HeartBookmark")
+//                .add(plant)
+//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                    @Override
+//                    public void onSuccess(DocumentReference documentReference) { //디테일 들어가면 문서와 필드가 추가됨
+//                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w(TAG, "Error adding document", e);
+//                    }
+//                });
+
 
         likeBtn = (ImageButton)findViewById(R.id.like_btn);
         likeBtn.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +129,10 @@ public class PlantDetail extends AppCompatActivity {
                 if (i == true){ //문제- 처음에 버튼이 안먹혀서 하트 해제할때마다 필드 업뎃일어남. 반대로 구현되게해야됨. 밑에 주석풀면 이해될것
                     likeBtn.setBackgroundResource(R.drawable.line_heart);
                     i = false;
+
+                    //문서 이름을 식물 이름(data_title)으로 저장
+                    db.collection("HeartBookmark").document(data_title).set(plant);
+
 
 //                    db.collection("HeartBookmark")
 //                            .get()
@@ -141,6 +152,9 @@ public class PlantDetail extends AppCompatActivity {
                 }else {
                     likeBtn.setBackgroundResource(R.drawable.heart);
                     i = true;
+
+                    //하트북마크 해제할시 저장한것도 삭제함
+                    db.collection("HeartBookmark").document(data_title).delete();
                 }
 
             }
