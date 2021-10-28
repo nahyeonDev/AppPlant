@@ -17,13 +17,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PlantQuestionDetail extends AppCompatActivity {
 
-//    private DatabaseReference databaseReference;
-//    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase database;
 
     TextView Qtitle;
     TextView Qtxt;
     TextView Qcontent;
-    private ImageButton backBtn;
 
     private String main = null;
     private String sub = null;
@@ -40,32 +39,32 @@ public class PlantQuestionDetail extends AppCompatActivity {
         Qtxt = findViewById(R.id.QTxt);
         Qcontent = findViewById(R.id.plant_data);
 
-//        //intent로 데이터베이스 관련 정보 받아 옴.
-//        Intent qIntent = getIntent();
-//        String mainQ = qIntent.getStringExtra("메인");
-//        String subQ = qIntent.getStringExtra("상세");
-//
-//        main = new String(mainQ);
-//        sub = new String(subQ);
-//
-//        database = FirebaseDatabase.getInstance();
-//        databaseReference = database.getReference(main).child(sub);
-//
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                QList txt = snapshot.getValue(QList.class);
-//
-//                Qtitle.setText(txt.gettitle());
-//                Qtxt.setText(txt.getquestion());
-//                Qcontent.setText(txt.getcontent());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        //intent로 데이터베이스 관련 정보 받아 옴.
+        Intent qIntent = getIntent();
+        String mainQ = qIntent.getStringExtra("메인");
+        String subQ = qIntent.getStringExtra("상세");
+
+        main = new String(mainQ);
+        sub = new String(subQ);
+
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference(main).child(sub);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                QList txt = snapshot.getValue(QList.class);
+
+                Qtitle.setText(txt.gettitle());
+                Qtxt.setText(txt.getquestion());
+                Qcontent.setText(txt.getcontent());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         starBtn = (ImageButton)findViewById(R.id.star_btn);
         starBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,13 +78,6 @@ public class PlantQuestionDetail extends AppCompatActivity {
                     i = true;
                 }
             }
-        });
-
-        //back 버튼 액션
-        backBtn = findViewById(R.id.backBtn_Q);
-        backBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {finish();}
         });
     }
 }
