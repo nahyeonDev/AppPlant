@@ -43,10 +43,11 @@ public class HeartBookmarkFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()){ //하트 눌렀을때 목록들 보여줌
                                 // 현재 s= {plantName=섬잣나무}
-                                String s= document.getData().toString().split("=")[1];
-                                s=s.substring(0,s.length()-1);
-                                plant_mark1.setText(s); //하트 누른 개수만큼 텍스트뷰 생성+ 그만큼 보여줘야됨
+//                                String s= document.getData().toString().split("=")[1];
+//                                s=s.substring(0,s.length()-1);
 
+                                String s= (String) document.get("plantName"); //이름만 가져오기
+                                plant_mark1.setText(s); //하트 누른 개수만큼 텍스트뷰 생성+ 그만큼 보여줘야됨
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                             }
                         } else {
