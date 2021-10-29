@@ -64,7 +64,7 @@ public class PlantQuestionDetail extends AppCompatActivity {
 
                 Qtitle.setText(txt.gettitle());
                 Q_title=txt.getquestion();
-                Qtxt.setText(txt.getquestion());
+                Qtxt.setText(Q_title);
                 Qcontent.setText(txt.getcontent());
             }
 
@@ -79,10 +79,6 @@ public class PlantQuestionDetail extends AppCompatActivity {
         // 질문을 Map으로 구현해 추가할 필드 넣기
         Map<String, Object> Question = new HashMap<>();
 
-        Question.put("Q_title", Q_title);
-        System.out.println("hoooo"+Q_title);
-
-
         starBtn = (ImageButton)findViewById(R.id.star_btn);
         starBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,10 +86,10 @@ public class PlantQuestionDetail extends AppCompatActivity {
                 if (i == true){
                     starBtn.setBackgroundResource(R.drawable.line_star);
                     i = false;
-                    //문서 이름을 질문제목(Q_title)으로 저장
-                    db.collection("StarBookmark").document(Q_title).set(Question);
-                    System.out.println("hoooo222"+Q_title);
 
+                    //문서 이름을 질문제목(Q_title)으로 저장
+                    Question.put("Q_title", Q_title);
+                    db.collection("StarBookmark").document(Q_title).set(Question);
 
                 }else {
                     starBtn.setBackgroundResource(R.drawable.star);

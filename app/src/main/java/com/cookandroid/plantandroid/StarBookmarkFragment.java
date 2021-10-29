@@ -22,11 +22,8 @@ import java.util.ArrayList;
 
 
 public class StarBookmarkFragment extends Fragment {
-    private TextView plant_mark1;
-    private TextView plant_mark2;
-    private TextView plant_mark3;
     private RecyclerView recyclerView;
-    public StarBookmarkFragment starBookmarkFragment;
+    public StarBookmarkAdapter starBookmarkFragment;
     View v;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +31,6 @@ public class StarBookmarkFragment extends Fragment {
 
         String TAG="hoooo"; //임의로 작성
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -44,15 +40,15 @@ public class StarBookmarkFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()){ //하트 눌렀을때 목록들 보여줌
+                            for (QueryDocumentSnapshot document : task.getResult()){ //별 눌렀을때 목록들 보여줌
                                 list.add(document.get("Q_title").toString());
                                 // 리사이클러뷰에 LinearLayoutManager 객체 지정.
-                                recyclerView =v.findViewById(R.id.heart_Recycler) ;
+                                recyclerView =v.findViewById(R.id.star_Recycler) ;
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext())) ;
 
                                 // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-//                                starBookmarkFragment = new StarBookmarkFragment(list) ;
-//                                recyclerView.setAdapter(starBookmarkFragment) ;
+                                starBookmarkFragment=new StarBookmarkAdapter(list);
+                                recyclerView.setAdapter(starBookmarkFragment) ;
 
 
 //                                String s= (String) document.get("plantName"); //이름만 가져오기

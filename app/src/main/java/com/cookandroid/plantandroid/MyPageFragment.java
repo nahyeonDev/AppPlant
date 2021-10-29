@@ -49,10 +49,11 @@ public class MyPageFragment extends Fragment {
         userBtn=v.findViewById(R.id.userBtn);
         userEmail=v.findViewById(R.id.userEmail);
         likeBtn=v.findViewById(R.id.likeBtn);
+        starBtn=v.findViewById(R.id.starBtn);
 
         myPageUserFragment = new MyPageUserFragment();
         heartBookmarkFragment = new HeartBookmarkFragment();
-
+        starBookmarkFragment = new StarBookmarkFragment();
 
         //프로필 사진 누르면 avd 갤러리와 연결.
         userImg=v.findViewById(R.id.userImg);
