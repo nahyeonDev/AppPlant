@@ -24,19 +24,12 @@ import java.util.ArrayList;
 
 
 public class HeartBookmarkFragment extends Fragment {
-    private TextView plant_mark1;
-    private TextView plant_mark2;
-    private TextView plant_mark3;
     private RecyclerView recyclerView;
     public HeartBookmarkAdapter heartBookmarkAdapter;
     View v;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.heart_bookmark, container, false);
-
-        plant_mark1=v.findViewById(R.id.plant_mark1);
-        plant_mark2=v.findViewById(R.id.plant_mark2);
-        plant_mark3=v.findViewById(R.id.plant_mark3);
 
         String TAG="hoooo"; //임의로 작성
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
