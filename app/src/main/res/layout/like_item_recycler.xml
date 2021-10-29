@@ -5,10 +5,11 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="15dp"
-    android:background="@drawable/border">
+    android:elevation="10dp">
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
         android:src="@drawable/heart"/>
 
     <TextView
@@ -18,7 +19,7 @@
         android:text="식물이름"
         android:fontFamily="@font/main_font"
         android:layout_gravity="center"
-        android:layout_marginLeft="50dp"
-        android:textSize="30sp"/>
+        android:layout_marginLeft="15dp"
+        android:textSize="20sp"/>
 
 </LinearLayout>

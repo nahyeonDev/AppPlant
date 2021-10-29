@@ -2,7 +2,6 @@ package com.cookandroid.plantandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -10,21 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +41,10 @@ public class PlantDetail extends AppCompatActivity {
     boolean i = true;
 
     private String userId;
+    private String uid;
+    private String HeartBookmark;
+
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +115,12 @@ public class PlantDetail extends AppCompatActivity {
 //                    }
 //                });
 
+        //사용자 이메일로 uid 만들어서 각 사용자마다의 찜을 저장.
+        userId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String target = "@";
+        int target_num = userId.indexOf(target);
+        uid = userId.substring(0, target_num);
+        HeartBookmark = uid + "HeartBookmark";
 
         likeBtn = (ImageButton)findViewById(R.id.like_btn);
         likeBtn.setOnClickListener(new View.OnClickListener() {
@@ -127,11 +128,11 @@ public class PlantDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (i == true){ //문제- 처음에 버튼이 안먹혀서 하트 해제할때마다 필드 업뎃일어남. 반대로 구현되게해야됨. 밑에 주석풀면 이해될것
-                    likeBtn.setBackgroundResource(R.drawable.line_heart);
+                    likeBtn.setBackgroundResource(R.drawable.heart);
                     i = false;
 
                     //문서 이름을 식물 이름(data_title)으로 저장
-                    db.collection("HeartBookmark").document(data_title).set(plant);
+                    db.collection(HeartBookmark).document(data_title).set(plant);
 
 
 //                    db.collection("HeartBookmark")
@@ -150,11 +151,11 @@ public class PlantDetail extends AppCompatActivity {
 //                            });
 
                 }else {
-                    likeBtn.setBackgroundResource(R.drawable.heart);
+                    likeBtn.setBackgroundResource(R.drawable.line_heart);
                     i = true;
 
                     //하트북마크 해제할시 저장한것도 삭제함
-                    db.collection("HeartBookmark").document(data_title).delete();
+                    db.collection(HeartBookmark).document(data_title).delete();
                 }
 
             }

@@ -1,17 +1,15 @@
 package com.cookandroid.plantandroid;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,16 +26,26 @@ public class HeartBookmarkFragment extends Fragment {
     public HeartBookmarkAdapter heartBookmarkAdapter;
     View v;
 
+    private String userId;
+    private String uid;
+    private String HeartBookmark;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.heart_bookmark, container, false);
 
         String TAG="hoooo"; //임의로 작성
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
         ArrayList<String> list = new ArrayList<>();
 
-        db.collection("HeartBookmark")
+        //사용자 이메일로 uid 만들어서 각 사용자마다의 찜을 불러옴.
+        userId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String target = "@";
+        int target_num = userId.indexOf(target);
+        uid = userId.substring(0, target_num);
+        HeartBookmark = uid + "HeartBookmark";
+
+        db.collection(HeartBookmark)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
