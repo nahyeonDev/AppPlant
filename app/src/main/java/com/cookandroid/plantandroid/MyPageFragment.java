@@ -31,9 +31,11 @@ public class MyPageFragment extends Fragment {
     private Button userBtn;
     private TextView userEmail;
     private ImageButton likeBtn;
+    private ImageButton starBtn;
 
     MyPageUserFragment myPageUserFragment;
     HeartBookmarkFragment heartBookmarkFragment;
+    StarBookmarkFragment starBookmarkFragment;
 
     private final String TAG = this.getClass().getSimpleName();
     private ImageView userImg;
@@ -50,6 +52,7 @@ public class MyPageFragment extends Fragment {
 
         myPageUserFragment = new MyPageUserFragment();
         heartBookmarkFragment = new HeartBookmarkFragment();
+
 
         //프로필 사진 누르면 avd 갤러리와 연결.
         userImg=v.findViewById(R.id.userImg);
@@ -69,21 +72,30 @@ public class MyPageFragment extends Fragment {
         //사용자 이메일 보여짐
         userEmail.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
-        //회원정보 버튼
-        userBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //회원정보 프래그먼트로 연결
-                getChildFragmentManager().beginTransaction().replace(R.id.frame_container, myPageUserFragment).commit();
-            }
-        });
-
         //하트 북마크 버튼
         likeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //하트북마크 프래그먼트로 연결
                 getChildFragmentManager().beginTransaction().replace(R.id.frame_container, heartBookmarkFragment).commit();
+            }
+        });
+
+        //별 북마크 버튼
+        starBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //별북마크 프래그먼트로 연결
+                getChildFragmentManager().beginTransaction().replace(R.id.frame_container, starBookmarkFragment).commit();
+            }
+        });
+
+        //회원정보 버튼
+        userBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //회원정보 프래그먼트로 연결
+                getChildFragmentManager().beginTransaction().replace(R.id.frame_container, myPageUserFragment).commit();
             }
         });
 

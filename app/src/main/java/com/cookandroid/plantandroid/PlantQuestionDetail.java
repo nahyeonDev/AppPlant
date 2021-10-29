@@ -2,6 +2,7 @@ package com.cookandroid.plantandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,6 +15,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlantQuestionDetail extends AppCompatActivity {
 
@@ -23,9 +28,11 @@ public class PlantQuestionDetail extends AppCompatActivity {
     TextView Qtitle;
     TextView Qtxt;
     TextView Qcontent;
+    ImageButton backBtn_Q;
 
     private String main = null;
     private String sub = null;
+    public String Q_title="";
 
     ImageButton starBtn;
     boolean i = true;
@@ -56,6 +63,7 @@ public class PlantQuestionDetail extends AppCompatActivity {
                 QList txt = snapshot.getValue(QList.class);
 
                 Qtitle.setText(txt.gettitle());
+                Q_title=txt.getquestion();
                 Qtxt.setText(txt.getquestion());
                 Qcontent.setText(txt.getcontent());
             }
@@ -66,6 +74,15 @@ public class PlantQuestionDetail extends AppCompatActivity {
             }
         });
 
+        String TAG="hoooo";//임의로 작성
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        // 질문을 Map으로 구현해 추가할 필드 넣기
+        Map<String, Object> Question = new HashMap<>();
+
+        Question.put("Q_title", Q_title);
+        System.out.println("hoooo"+Q_title);
+
+
         starBtn = (ImageButton)findViewById(R.id.star_btn);
         starBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +90,25 @@ public class PlantQuestionDetail extends AppCompatActivity {
                 if (i == true){
                     starBtn.setBackgroundResource(R.drawable.line_star);
                     i = false;
+                    //문서 이름을 질문제목(Q_title)으로 저장
+                    db.collection("StarBookmark").document(Q_title).set(Question);
+                    System.out.println("hoooo222"+Q_title);
+
+
                 }else {
                     starBtn.setBackgroundResource(R.drawable.star);
                     i = true;
+                    //별북마크 해제할시 저장한것도 삭제함
+                    db.collection("StarBookmark").document(Q_title).delete();
                 }
             }
+        });
+
+        //back 버튼 액션
+        backBtn_Q = findViewById(R.id.backBtn_Q);
+        backBtn_Q.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {finish();}
         });
     }
 }
