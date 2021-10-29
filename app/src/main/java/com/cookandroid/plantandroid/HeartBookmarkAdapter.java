@@ -42,7 +42,7 @@ public class HeartBookmarkAdapter extends RecyclerView.Adapter<HeartBookmarkAdap
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.heart_bookmark,parent,false);
+        View view = inflater.inflate(R.layout.like_item_recycler,parent,false);
         HeartBookmarkAdapter.ViewHolder vh = new HeartBookmarkAdapter.ViewHolder(view);
 
         return vh;
@@ -55,7 +55,7 @@ public class HeartBookmarkAdapter extends RecyclerView.Adapter<HeartBookmarkAdap
         String text= plantName.get(position);
         Log.d("hoooooooo",text);
 
-        //holder.heart_plantName.setText(text);
+        holder.heart_plantName.setText(text);
         //Log.d("hoooooooo", (String) holder.heart_plantName.getText());
 
 //        ListItemObj item = mData.get(position) ;
