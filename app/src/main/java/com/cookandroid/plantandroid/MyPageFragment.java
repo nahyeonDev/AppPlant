@@ -134,7 +134,7 @@ public class MyPageFragment extends Fragment {
                         Log.e(TAG, "uri : " + uri);
 //                        userImg.setImageURI(uri);
 
-                        Glide.with(MyPageFragment.this)
+                        Glide.with(MyPageFragment.this) //getContext()로 대체해볼것
                                 .load(uri)
                                 .into(userImg);
 

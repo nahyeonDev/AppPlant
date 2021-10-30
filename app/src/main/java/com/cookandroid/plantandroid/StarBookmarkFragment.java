@@ -36,7 +36,7 @@ public class StarBookmarkFragment extends Fragment {
         String TAG="hoooo"; //임의로 작성
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<QList> list = new ArrayList<>();
 
         //사용자 이메일로 uid 만들어서 각 사용자마다의 별을 불러옴.
         userId = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -52,7 +52,10 @@ public class StarBookmarkFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()){ //별 눌렀을때 목록들 보여줌
-                                list.add(document.get("Q_title").toString());
+                                //list.add(document.get("Q_title").toString());
+
+                                list.add(new QList(document.get("title").toString(), document.get("content").toString(),document.get("question").toString()
+                                        ,document.get("mainQ").toString(),document.get("subQ").toString()));
                                 // 리사이클러뷰에 LinearLayoutManager 객체 지정.
                                 recyclerView =v.findViewById(R.id.star_Recycler) ;
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext())) ;
@@ -60,7 +63,6 @@ public class StarBookmarkFragment extends Fragment {
                                 // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
                                 starBookmarkFragment=new StarBookmarkAdapter(list);
                                 recyclerView.setAdapter(starBookmarkFragment) ;
-
 
 //                                String s= (String) document.get("plantName"); //이름만 가져오기
 //                                plant_mark1.setText(s); //하트 누른 개수만큼 텍스트뷰 생성+ 그만큼 보여줘야됨

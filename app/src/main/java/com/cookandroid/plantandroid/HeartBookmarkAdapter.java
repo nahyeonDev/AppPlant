@@ -1,10 +1,12 @@
 package com.cookandroid.plantandroid;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,15 +16,18 @@ import java.util.ArrayList;
 
 public class HeartBookmarkAdapter extends RecyclerView.Adapter<HeartBookmarkAdapter.ViewHolder> {
     private ArrayList<String> plantName=null;
+    private Intent intent;
 
     //아이템 뷰 저장하는 뷰 홀더 클래스
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView heart_plantName;
+        LinearLayout heartList_container;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             heart_plantName=itemView.findViewById(R.id.heart_plantName);
+            heartList_container= itemView.findViewById(R.id.heartList_container);
         }
     }
 
@@ -54,23 +59,23 @@ public class HeartBookmarkAdapter extends RecyclerView.Adapter<HeartBookmarkAdap
         holder.heart_plantName.setText(text);
         //Log.d("hoooooooo", (String) holder.heart_plantName.getText());
 
-//        ListItemObj item = mData.get(position) ;
-//
-//        //이름가져오기
-//        holder.plant_title.setText(item.getplantName());
-//        //holder.btn.setText(item.getPlantName());
-//
-//        //상세페이지 연결(item_recycler의 리니어레이아웃의 id를 연결해 이미지가 아닌 리스트 어느 곳을 눌러도 넘어갈 수 있음)
-//        holder.list_container.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                intent= new Intent(v.getContext(), PlantDetail.class);
-//                //식물 이름을 디테일 화면으로 전해서 식물 이름으로 세부화면 내용 받아옴
-//                intent.putExtra("title", mData.get(position).getplantName());
-//                v.getContext().startActivity(intent);
-//                //Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        //ListItemObj item = mData.get(position) ;
+
+        //이름가져오기
+        //holder.plant_title.setText(item.getplantName());
+        //holder.btn.setText(item.getPlantName());
+
+        //상세페이지 연결(item_like_recycler의 리니어레이아웃의 id를 연결해 이미지가 아닌 리스트 어느 곳을 눌러도 넘어갈 수 있음)
+        holder.heartList_container.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                intent= new Intent(v.getContext(), PlantDetail.class);
+                //식물 이름을 디테일 화면으로 전해서 식물 이름으로 세부화면 내용 받아옴
+                intent.putExtra("title", text);
+                v.getContext().startActivity(intent);
+                //Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

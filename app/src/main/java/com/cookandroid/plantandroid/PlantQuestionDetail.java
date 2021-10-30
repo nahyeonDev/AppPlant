@@ -2,6 +2,7 @@ package com.cookandroid.plantandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -64,12 +65,14 @@ public class PlantQuestionDetail extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                QList txt = snapshot.getValue(QList.class);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    QList txt = snapshot.getValue(QList.class);
 
-                Qtitle.setText(txt.gettitle());
-                Q_title=txt.getquestion();
-                Qtxt.setText(Q_title);
-                Qcontent.setText(txt.getcontent());
+                    Qtitle.setText(txt.gettitle());
+                    Q_title = txt.getquestion();
+                    Qtxt.setText(Q_title);
+                    Qcontent.setText(txt.getcontent());
+                }
             }
 
             @Override
@@ -99,7 +102,13 @@ public class PlantQuestionDetail extends AppCompatActivity {
                     i = false;
 
                     //문서 이름을 질문제목(Q_title)으로 저장
-                    Question.put("Q_title", Q_title);
+                    Question.put("title", Qtitle.getText());
+                    Question.put("content", Qcontent.getText());
+                    Question.put("question", Q_title);
+
+                    Question.put("mainQ",mainQ);
+                    Question.put("subQ",subQ);
+
                     db.collection(StarBookmark).document(Q_title).set(Question);
 
                 }else {
