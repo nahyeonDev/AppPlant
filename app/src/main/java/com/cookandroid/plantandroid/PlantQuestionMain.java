@@ -1,6 +1,7 @@
 package com.cookandroid.plantandroid;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 public class PlantQuestionMain extends Fragment {
@@ -32,12 +38,13 @@ public class PlantQuestionMain extends Fragment {
     private String txt = null;
     private String txt2 = null;
     private String txt3 = null;
+    private String img = null;
 
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReference2;
     private FirebaseDatabase database;
-//    private FirebaseStorage firebaseStorage;
-//    private StorageReference storageReference;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     LinearLayout bookContent1, bookContent2, bookContent3;
 
@@ -207,36 +214,65 @@ public class PlantQuestionMain extends Fragment {
             }
         });
 
-        for(int i =0; i<3; i++){
+        //파이어베이스 스토리지 연결
+        firebaseStorage = FirebaseStorage.getInstance();
+
+        for(int i =1; i<=3; i++){
             txt3 = "B" + Integer.toString(i);
+            //파이어베이스에 저장된 식물 사진 이름
+            img = "book" + Integer.toString(i) +".jpg";
 
-            int num =1;
-
-            //사진도 uri 상태로 파이어베이스에 저장할 예정
+            int num = i;
 
             //세번째 카테고리(book)
             databaseReference = database.getReference("PlantStoryBook").child(txt3);
-            //question 값을 가져와서 버튼에 setText
+            //title 값을 가져와서 버튼에 setText
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    QbookList title = snapshot.getValue(QbookList.class);
-
-                    if (num == 1) {
-                        //질문/제목 배치
-                        bookTitle1.setText(title.gettitle());
-                    }
-                    else if (num == 2) {
-                        bookTitle2.setText(title.gettitle());
-                    }
-                    else if (num == 3) {
-                        bookTitle3.setText(title.gettitle());
-                    }
+                    QbookList t = snapshot.getValue(QbookList.class);
+                    if (num == 1)
+                        //제목 배치
+                        bookTitle1.setText(t.gettitle());
+                    else if (num == 2)
+                        bookTitle2.setText(t.gettitle());
+                    else if (num == 3)
+                        bookTitle3.setText(t.gettitle());
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
+                }
+            });
+
+            //파이어베이스 스토리지에서 사진 경로 설정
+            storageReference = firebaseStorage.getReference().child("bookphoto").child(img);
+            //StorageReference에서 파일 다운로드 URL 가져옴
+            storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        if(num == 1){
+                            // Glide 이용하여 이미지뷰에 로딩
+                            Glide.with(PlantQuestionMain.this)
+                                    .load(task.getResult())
+                                    .into(img1);
+                        }
+                        else if(num == 2){
+                            // Glide 이용하여 이미지뷰에 로딩
+                            Glide.with(PlantQuestionMain.this)
+                                    .load(task.getResult())
+                                    .into(img2);
+                        }
+                        else if(num == 3){
+                            // Glide 이용하여 이미지뷰에 로딩
+                            Glide.with(PlantQuestionMain.this)
+                                    .load(task.getResult())
+                                    .into(img3);
+                        }
+                    } else {
+                        // URL을 가져오지 못함.
+                    }
                 }
             });
         }
@@ -249,6 +285,29 @@ public class PlantQuestionMain extends Fragment {
             @Override
             public void onClick(View view) {
                 //클릭하면 책 구매 사이트로 이동하도록 할 예정.
+                Intent intent = new Intent(getActivity(), BookSiteActivity.class);
+                intent.putExtra("순서", "1");
+                startActivity(intent);
+            }
+        });
+
+        bookContent2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //클릭하면 책 구매 사이트로 이동하도록 할 예정.
+                Intent intent = new Intent(getActivity(), BookSiteActivity.class);
+                intent.putExtra("순서", "2");
+                startActivity(intent);
+            }
+        });
+
+        bookContent3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //클릭하면 책 구매 사이트로 이동하도록 할 예정.
+                Intent intent = new Intent(getActivity(), BookSiteActivity.class);
+                intent.putExtra("순서", "3");
+                startActivity(intent);
             }
         });
 

@@ -175,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -205,7 +205,7 @@
                         android:src="@drawable/book1"/>
                     <TextView
                         android:id="@+id/book_title1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:text="Title"
                         android:textSize="15sp"
@@ -228,7 +228,7 @@
                         android:src="@drawable/plant_bookex"/>
                     <TextView
                         android:id="@+id/book_title2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:text="Title"
                         android:textSize="15sp"
@@ -251,7 +251,7 @@
                         android:src="@drawable/plant_bookex" />
                     <TextView
                         android:id="@+id/book_title3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:text="Title"
                         android:textSize="15sp"

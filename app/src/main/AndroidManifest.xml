@@ -24,6 +24,7 @@
         <activity android:name=".PlantQuestionDetail"></activity>
         <activity android:name=".PlantList"></activity>
         <activity android:name=".PlantList2"></activity>
+        <activity android:name=".BookSiteActivity"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
