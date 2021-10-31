@@ -59,7 +59,8 @@
                         app:layout_constraintEnd_toEndOf="@+id/like_btn"
                         app:layout_constraintStart_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"/>
+                        app:layout_constraintVertical_bias="0.0"
+                        android:gravity="center"/>
 
                     <ImageButton
                         android:id="@+id/like_btn"
@@ -85,12 +86,15 @@
 
                         <TextView
                             android:id="@+id/plant_size"
-                            android:layout_width="130dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="크기 정보"
                             android:layout_gravity="center"
-                            android:layout_marginRight="2dp"
-                            android:layout_marginLeft="2dp"/>
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/sub_font"/>
 
                     </LinearLayout>
 
@@ -105,20 +109,17 @@
                             android:layout_marginLeft="20dp"
                             android:background="@drawable/border3">
 
-                            <ImageView
-                                android:layout_marginLeft="15dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/wateringcan"/>
-
                             <TextView
                                 android:id="@+id/plant_detail"
-                                android:layout_width="74dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="30dp"
-                                android:text="특징1" />
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:text="특징1"
+                                android:fontFamily="@font/sub_font"/>
 
                         </LinearLayout>
 
@@ -132,12 +133,15 @@
 
                             <TextView
                                 android:id="@+id/plant_location"
-                                android:layout_width="130dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="특징2"
                                 android:layout_gravity="center"
-                                android:layout_marginRight="2dp"
-                                android:layout_marginLeft="2dp"/>
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/sub_font"/>
 
                         </LinearLayout>
 
@@ -162,9 +166,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="공공데이터 내용 + 아이들 맞춤 내용"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"
-                            android:layout_marginLeft="15dp"/>
+                            android:fontFamily="@font/sub_font"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"/>
 
                     </LinearLayout>
 

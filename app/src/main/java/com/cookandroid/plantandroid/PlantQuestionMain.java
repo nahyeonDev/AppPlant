@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,14 +25,21 @@ public class PlantQuestionMain extends Fragment {
     Button content1, content2, content3, content4, content5,
     content6, content7, content8;
 
-    TextView category1, category2;
+    TextView category1, category2, bookTitle1, bookTitle2, bookTitle3;
+
+    ImageView img1, img2, img3;
 
     private String txt = null;
     private String txt2 = null;
+    private String txt3 = null;
 
     private DatabaseReference databaseReference;
     private DatabaseReference databaseReference2;
     private FirebaseDatabase database;
+//    private FirebaseStorage firebaseStorage;
+//    private StorageReference storageReference;
+
+    LinearLayout bookContent1, bookContent2, bookContent3;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.plant_question_main, container, false);
@@ -47,10 +56,17 @@ public class PlantQuestionMain extends Fragment {
         category1 = v.findViewById(R.id.cat_main1);
         category2 = v.findViewById(R.id.cat_main2);
 
+        bookTitle1 = v.findViewById(R.id.book_title1);
+        bookTitle2 = v.findViewById(R.id.book_title2);
+        bookTitle3 = v.findViewById(R.id.book_title3);
 
+        img1 = v.findViewById(R.id.book_img1);
+        img2 = v.findViewById(R.id.book_img2);
+        img3 = v.findViewById(R.id.book_img3);
+
+        database = FirebaseDatabase.getInstance();
         //파이어베이스 읽어오기
         for(int i=1; i<=4; i++) {
-            database = FirebaseDatabase.getInstance();
             txt = "Q" + Integer.toString(i);
             txt2 = "QQ" + Integer.toString(i);
             //첫번째 카테고리(PlantStory - Q1 - question을 접근)
@@ -191,6 +207,50 @@ public class PlantQuestionMain extends Fragment {
             }
         });
 
+        for(int i =0; i<3; i++){
+            txt3 = "B" + Integer.toString(i);
+
+            int num =1;
+
+            //사진도 uri 상태로 파이어베이스에 저장할 예정
+
+            //세번째 카테고리(book)
+            databaseReference = database.getReference("PlantStoryBook").child(txt3);
+            //question 값을 가져와서 버튼에 setText
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    QbookList title = snapshot.getValue(QbookList.class);
+
+                    if (num == 1) {
+                        //질문/제목 배치
+                        bookTitle1.setText(title.gettitle());
+                    }
+                    else if (num == 2) {
+                        bookTitle2.setText(title.gettitle());
+                    }
+                    else if (num == 3) {
+                        bookTitle3.setText(title.gettitle());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        bookContent1 = v.findViewById(R.id.book1);
+        bookContent2 = v.findViewById(R.id.book2);
+        bookContent3 = v.findViewById(R.id.book3);
+
+        bookContent1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //클릭하면 책 구매 사이트로 이동하도록 할 예정.
+            }
+        });
 
         return v;
     }

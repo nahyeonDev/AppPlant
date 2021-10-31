@@ -57,10 +57,11 @@ tools:context=".PlantDetail">
 
             <TextView
                 android:id="@+id/QTxt"
-                android:layout_width="250dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="35sp"
+                android:textAlignment="center"
+                android:textSize="28sp"
                 android:textColor="@color/black"
                 android:text="식물은 감각이 없나요?"
                 android:layout_weight="1"
@@ -88,7 +89,7 @@ tools:context=".PlantDetail">
                 android:layout_centerInParent="true"
                 android:text="답변"
                 android:layout_gravity="center"
-                android:layout_marginLeft="180dp"
+                android:layout_marginLeft="185dp"
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textSize="30sp"
@@ -120,9 +121,11 @@ tools:context=".PlantDetail">
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="공공데이터 내용 + 아이들 맞춤 내용"
-                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/sub_font"
                         android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"/>
+                        android:layout_marginLeft="15dp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"/>
 
                 </LinearLayout>
         </LinearLayout>

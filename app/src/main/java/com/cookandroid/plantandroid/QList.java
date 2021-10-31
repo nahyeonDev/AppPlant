@@ -1,6 +1,6 @@
 package com.cookandroid.plantandroid;
 
-//SiteMainFragment, SiteDetailActivity 데이터베이스 읽어올 때 쓰는 함수
+//PlantQuestionMain, PlantQusetionDetail 데이터베이스 읽어올 때 쓰는 함수
 public class QList {
     //변수 선언
     private String title;

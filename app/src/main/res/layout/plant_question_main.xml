@@ -194,6 +194,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp">
                 <LinearLayout
+                    android:id="@+id/book1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -201,17 +202,21 @@
                         android:id="@+id/book_img1"
                         android:layout_width="110dp"
                         android:layout_height="130dp"
-                        android:src="@drawable/plant_bookex"/>
+                        android:src="@drawable/book1"/>
                     <TextView
                         android:id="@+id/book_title1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Title"
-                        android:textSize="20sp"
-                        android:layout_gravity="center"/>
+                        android:textSize="15sp"
+                        android:fontFamily="@font/sub_font"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/book2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -226,11 +231,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Title"
-                        android:textSize="20sp"
-                        android:layout_gravity="center"/>
+                        android:textSize="15sp"
+                        android:fontFamily="@font/sub_font"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
 
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/book3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -245,8 +254,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Title"
-                        android:textSize="20sp"
-                        android:layout_gravity="center"/>
+                        android:textSize="15sp"
+                        android:fontFamily="@font/sub_font"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
 
                 </LinearLayout>
 
