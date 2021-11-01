@@ -177,9 +177,10 @@ public class PlantQuestionMain extends Fragment {
         content5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlantQuestionDetail.class);
+                Intent intent = new Intent(getActivity(), PlantQuestionDetail2.class);
                 intent.putExtra("메인", "PlantStory2");
                 intent.putExtra("상세", "QQ1");
+                intent.putExtra("사진","1");
                 startActivity(intent);
             }
         });
@@ -187,9 +188,10 @@ public class PlantQuestionMain extends Fragment {
         content6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlantQuestionDetail.class);
+                Intent intent = new Intent(getActivity(), PlantQuestionDetail2.class);
                 intent.putExtra("메인", "PlantStory2");
                 intent.putExtra("상세", "QQ2");
+                intent.putExtra("사진","2");
                 startActivity(intent);
             }
         });
@@ -197,9 +199,10 @@ public class PlantQuestionMain extends Fragment {
         content7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlantQuestionDetail.class);
+                Intent intent = new Intent(getActivity(), PlantQuestionDetail2.class);
                 intent.putExtra("메인", "PlantStory2");
                 intent.putExtra("상세", "QQ3");
+                intent.putExtra("사진","3");
                 startActivity(intent);
             }
         });
@@ -207,9 +210,10 @@ public class PlantQuestionMain extends Fragment {
         content8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlantQuestionDetail.class);
+                Intent intent = new Intent(getActivity(), PlantQuestionDetail2.class);
                 intent.putExtra("메인", "PlantStory2");
                 intent.putExtra("상세", "QQ4");
+                intent.putExtra("사진","4");
                 startActivity(intent);
             }
         });
