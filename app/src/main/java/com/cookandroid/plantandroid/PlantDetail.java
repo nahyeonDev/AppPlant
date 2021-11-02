@@ -1,14 +1,19 @@
 package com.cookandroid.plantandroid;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +36,8 @@ public class PlantDetail extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase database;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     String data_title = null;
 
@@ -36,6 +45,7 @@ public class PlantDetail extends AppCompatActivity {
     TextView pLocation;
     TextView pSpecial;
     TextView pContent;
+    ImageView pImg;
 
     ImageButton likeBtn;
     boolean i = true;
@@ -43,8 +53,6 @@ public class PlantDetail extends AppCompatActivity {
     private String userId;
     private String uid;
     private String HeartBookmark;
-
-    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,28 @@ public class PlantDetail extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        pImg = findViewById(R.id.imageView2);
+
+        String imgName = data_title + ".png";
+        //파이어베이스 스토리지 연결
+        firebaseStorage = FirebaseStorage.getInstance();
+        //파이어베이스 스토리지에서 사진 경로 설정
+        storageReference = firebaseStorage.getReference().child("plantdetail").child(imgName);
+        //StorageReference에서 파일 다운로드 URL 가져옴
+        storageReference.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    // Glide 이용하여 이미지뷰에 로딩
+                    Glide.with(PlantDetail.this)
+                            .load(task.getResult())
+                            .into(pImg);
+                } else {
+                    // URL을 가져오지 못함.
+                }
             }
         });
 
