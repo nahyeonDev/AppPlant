@@ -6,14 +6,14 @@
         android:title="식물도감" />
     <item
         android:id="@+id/siteMap"
-        android:icon="@drawable/plant_icon"
+        android:icon="@drawable/map_icon"
         android:title="사이트" />
     <item
         android:id="@+id/plantQ"
-        android:icon="@drawable/plant_icon"
+        android:icon="@drawable/ic_baseline_question_answer_24"
         android:title="Q&amp;A" />
     <item
         android:id="@+id/myPage"
-        android:icon="@drawable/plant_icon"
+        android:icon="@drawable/mypage_icon"
         android:title="내 정보" />
 </menu>
