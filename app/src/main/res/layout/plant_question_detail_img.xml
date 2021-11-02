@@ -132,6 +132,7 @@
                 android:background="@drawable/border">
 
                 <ScrollView
+                    android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -141,11 +142,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
                         android:text="공공데이터 내용 + 아이들 맞춤 내용"
-                        android:fontFamily="@font/sub_font"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
+                        android:fontFamily="@font/sub_font"/>
 
 
                 </ScrollView>
