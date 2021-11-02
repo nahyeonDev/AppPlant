@@ -62,12 +62,34 @@ public class StarBookmarkAdapter extends RecyclerView.Adapter<StarBookmarkAdapte
         holder.questionList_container.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                intent= new Intent(v.getContext(), PlantQuestionDetail.class);
-                //질문제목을 디테일 화면으로 전해서 세부화면 내용 받아옴
 
-                intent.putExtra("메인", qlist.getQmain());
-                intent.putExtra("상세", qlist.getQdetail());
+                if(qlist.getQmain().equals("PlantStory")){
+                    intent= new Intent(v.getContext(), PlantQuestionDetail.class);
+                    //질문제목을 디테일 화면으로 전해서 세부화면 내용 받아옴
 
+                    intent.putExtra("메인", qlist.getQmain());
+                    intent.putExtra("상세", qlist.getQdetail());
+                }
+                else{
+                    intent= new Intent(v.getContext(), PlantQuestionDetail2.class);
+                    //질문제목을 디테일 화면으로 전해서 세부화면 내용 받아옴
+
+                    intent.putExtra("메인", qlist.getQmain());
+                    intent.putExtra("상세", qlist.getQdetail());
+
+                    if(qlist.getquestion().equals("바오밥나무")){
+                        intent.putExtra("사진", "1");
+                    }
+                    else if(qlist.getquestion().equals("미모사")){
+                        intent.putExtra("사진", "2");
+                    }
+                    else if(qlist.getquestion().equals("파란장미")){
+                        intent.putExtra("사진", "3");
+                    }
+                    else{
+                        intent.putExtra("사진", "4");
+                    }
+                }
                 v.getContext().startActivity(intent);
                 //Toast.makeText(v.getContext(), "클릭 되었습니다.", Toast.LENGTH_SHORT).show();
             }
