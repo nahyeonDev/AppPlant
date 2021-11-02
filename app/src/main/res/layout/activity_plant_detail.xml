@@ -178,17 +178,23 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/border">
 
-                    <TextView
-                        android:id="@+id/plant_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="공공데이터 내용 + 아이들 맞춤 내용"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:fontFamily="@font/sub_font"
-                        android:textColor="@color/black"
-                        android:textAlignment="center"
-                        android:layout_gravity="center"/>
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/plant_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="공공데이터 내용 + 아이들 맞춤 내용"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:fontFamily="@font/sub_font"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"/>
+
+                    </ScrollView>
 
                 </LinearLayout>
 
